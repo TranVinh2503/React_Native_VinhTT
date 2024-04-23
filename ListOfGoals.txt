@@ -1,0 +1,80 @@
+import { useState } from "react";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  View,
+  Text,
+} from "react-native";
+
+export default function ListOFGoals() {
+    const [goals,setGoals] = useState([])
+    const [newGoal,setNewGoal] = useState("")
+
+    let addGoal =()=>{
+        console.log([...goals,newGoal])
+        setGoals((currentGoals)=>[...currentGoals,newGoal])
+        
+    }
+    
+  return (
+    <View style={styles.appRoot}>
+      <View style={styles.topPanel}>
+        <TextInput onChangeText={setNewGoal} style={styles.input} placeholder="Enter your goals" />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={addGoal}
+        >
+          <Text>Add Goal</Text>
+        </TouchableOpacity>
+      </View>
+      <Text>List of goals</Text>
+      <View style={styles.bottomPanel}>
+        {goals.map((value,i)=>(
+            <Text style={styles.goalItem} key={i}>{value}</Text>
+        ))}
+      </View>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  appRoot: {
+    flex: 1,
+    paddingTop: 50,
+    marginHorizontal: 10,
+  },
+  topPanel: {
+    flex: 1,
+    paddingTop: 10,
+    alignItems: "flex-start",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  button: {
+
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 10,
+  },
+  input: {
+    width: "75%",
+    borderWidth: 2,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderColor: "#EEEEEE",
+  },
+  bottomPanel: {
+    flex: 4,
+    
+  },
+  goalItem:{
+    backgroundColor:"#BFDCE5",
+    paddingHorizontal:8,
+    paddingTop:8,
+    marginBottom:10,
+    borderWidth:2,
+    borderRadius:10,
+    overflow:"hidden"
+
+  },
+});

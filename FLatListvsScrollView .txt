@@ -1,0 +1,33 @@
+
+ScrollView: 
+ScrollView sẽ tải các mục 
+(dữ liệu trong đó để cuộn) ngay sau khi tải thành phần. 
+Vì vậy, tất cả dữ liệu sẽ gắn vào RAM 
+và bạn không thể sử dụng hàng trăm hoặc hàng nghìn mục trong đó (vì hiệu suất thấp) .
+
+FlatList: 
+Nhưng FlatList có một giải pháp tốt hơn cho vấn đề này, 
+nó sẽ gắn 10 mục (theo mặc định) vào màn hình, 
+nếu người dùng cuộn chế độ xem nên các mục khác sẽ gắn kết. 
+Đó là một lợi ích lớn của FlatList thay vì ScrollView.
+
+-> có thể sử dụng ScrollView trong các mục nhỏ (như 100 mục) 
+và FlatList cho đến cả 10000 mục.
+
+Bên trong một vòng lặp, 
+người ta thường muốn truyền thêm một parameter cho một event handler. 
+
+Ví dụ như, nếu id là ID của dòng (row), thì 2 dòng code bên dưới sẽ work:
+
+<button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
+<button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
+
+Hai dòng code trên là tương đương, 
+và lần lượt sử dụng hàm rút gọn và Function.prototype.bind.
+
+Trong cả hai trường hợp, 
+tham số e, 
+đại diện cho sự kiện React, 
+sẽ được truyền là tham số thứ hai sau số định danh. 
+Với hàm rút gọn, chúng ta phải truyền nó trực tiếp, 
+nhưng với bind thì những tham số còn lại sẽ tự động nối tiếp.

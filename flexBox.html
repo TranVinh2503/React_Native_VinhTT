@@ -1,0 +1,34 @@
+!<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <style>
+            .container{
+                width:600px;
+                height:200px;
+                background-color: antiquewhite;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+            }
+            .container > div{
+                box-sizing: border-box;
+                border: 1px solid brown;
+                width:150px;
+                height:150px;
+                background-color: rgb(240, 137, 137);
+            }
+
+        </style>
+    </head>
+    <body>
+    <div class="container">
+        <div style="flex:1">A</div>
+        <div style="flex:1">B</div>
+        <div style="flex:1">C</div>
+    </div>
+    </body>
+</html>
